@@ -57,8 +57,8 @@ def activate_Vmode(x):
       print("added r")
       keyboard.add_hotkey("shift+e", my_hotkeys.run_emacs, suppress=True)
       print("added t")
-      # keyboard.add_hotkey("k", my_hotkeys.run_keepass, suppress=True)
-      # print("added k")
+      keyboard.add_hotkey("k", my_hotkeys.run_keepass, suppress=True)
+      print("added k")
       
       # populate the cheat sheet
       print_cheatsheet()

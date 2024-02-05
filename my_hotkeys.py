@@ -19,7 +19,7 @@ def run_program(x):
 #### Run Specific Program
 
 def run_explorer():
-    os.startfile("")
+    subprocess.run("explorer", shell=True)
     print ("Running explorer")
 
 def run_browser():
@@ -31,13 +31,8 @@ def run_emacs():
     print ("Running Emacs")
 
 def run_keepass():
-    subprocess.run("C:\Program Files\KeePass Password Safe 2\KeePass.exe")
-    print ("Running KeePass")
-
-def run_keepass():
-    subprocess.run("C:\Program Files\KeePass Password Safe 2\KeePass.exe")
-    print ("Running KeePass")
-
+    subprocess.Popen("C:\\Program Files\\KeePass Password Safe 2\\KeePass.exe")
+    ("Running keepass")
 ### HOTKEY DEFINITIONS
     
 # run_program()
