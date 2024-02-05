@@ -17,10 +17,14 @@ frm = tk.Frame(window)
 
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
-
 window.overrideredirect(1)
-
 print (window.wm_attributes())
+window.attributes('-alpha', 0.8, 
+                  '-transparentcolor', '', 
+                  '-disabled', 0, 
+                  '-fullscreen', 0, 
+                  '-toolwindow', 0, 
+                  '-topmost', 0)
 
 def pos_window():
     window_width = 400
@@ -30,21 +34,12 @@ def pos_window():
     window.geometry(f"+{position_right}+{position_down}")
     window.geometry("400x300")
 
-window.attributes('-alpha', 0.8, 
-                  '-transparentcolor', '', 
-                  '-disabled', 0, 
-                  '-fullscreen', 0, 
-                  '-toolwindow', 0, 
-                  '-topmost', 0)
-
 list_my_hotkeys = {'e':'explorer',
                    'r':'browser',
                    'E':'emacs',
                    'k':'keepass'}
 
-list_my_programs = {
-   
-}
+list_my_programs = {}
 
 def activate_Vmode(x):
     if x == 0:
@@ -137,9 +132,10 @@ def set_mode(x):
   mode = x
 
 def main():
-   activate_Leader()
-   pos_window()
-   window.mainloop()
+   if __name__ == "__main__":
+      activate_Leader()
+      pos_window()
+      window.mainloop()
 
 main()
 
