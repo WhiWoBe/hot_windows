@@ -1,6 +1,4 @@
-# import threading
-# import subprocess
-
+from time import sleep
 import keyboard
 import tkinter as tk
 import my_hotkeys
@@ -9,11 +7,6 @@ mode = 0 # 0 = insert / 1 = normal
 window = tk.Tk()
 window.config(background="black")
 frm = tk.Frame(window)
-
-#frame = tk.Frame(window)
-#frame.pack()
-#button = tk.Button(frame,text="a",font=("Consolas", 25),width=3)
-#button.pack()
 
 screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
@@ -26,20 +19,42 @@ window.attributes('-alpha', 0.8,
                   '-toolwindow', 0, 
                   '-topmost', 0)
 
+print(my_hotkeys.d_my_files['1'][0])
+
+# for key, value in d_my_programs.items():
+#     print(key,value[:3:2])
+
+# print(list(d_my_programs.items())[0])
+
 def pos_window():
     window_width = 400
     window_height = 300
-    position_right = int(screen_width/2.0 - window_width/2)
-    position_down = int(screen_height/1.1 - window_height/2)
+    position_right = int(screen_width/2.1 - window_width/2)
+    position_down = int(screen_height/1 - window_height/2)
     window.geometry(f"+{position_right}+{position_down}")
-    window.geometry("400x300")
+    window.geometry("600x100")
 
-list_my_hotkeys = {'e':'explorer',
-                   'r':'browser',
-                   'E':'emacs',
-                   'k':'keepass'}
-
-list_my_programs = {}
+def activate_filelist():
+  keyboard.remove_all_hotkeys()
+  keyboard.add_hotkey("esc", deactivate_Vmode, suppress=True)
+  keyboard.add_hotkey("1", lambda: my_hotkeys.run_explorer_sub('1'), suppress=True)
+  keyboard.add_hotkey("2", lambda: my_hotkeys.run_explorer_sub('2'), suppress=True)
+  keyboard.add_hotkey("3", lambda: my_hotkeys.run_explorer_sub('3'), suppress=True)
+  keyboard.add_hotkey("4", lambda: my_hotkeys.run_explorer_sub('4'), suppress=True)
+  keyboard.add_hotkey("5", lambda: my_hotkeys.run_explorer_sub('5'), suppress=True)
+  frm.destroy()
+  print_cheatsheet(my_hotkeys.d_my_files)
+ 
+def activate_urllist():
+  keyboard.remove_all_hotkeys()
+  keyboard.add_hotkey("esc", deactivate_Vmode, suppress=True)
+  keyboard.add_hotkey("1", lambda: my_hotkeys.run_browser_sub('1'), suppress=True)
+  keyboard.add_hotkey("2", lambda: my_hotkeys.run_browser_sub('2'), suppress=True)
+  keyboard.add_hotkey("3", lambda: my_hotkeys.run_browser_sub('3'), suppress=True)
+  keyboard.add_hotkey("4", lambda: my_hotkeys.run_browser_sub('4'), suppress=True)
+  keyboard.add_hotkey("5", lambda: my_hotkeys.run_browser_sub('5'), suppress=True)
+  frm.destroy()
+  print_cheatsheet(my_hotkeys.d_my_urls)
 
 def activate_Vmode(x):
     if x == 0:
@@ -47,26 +62,26 @@ def activate_Vmode(x):
       print("\nadding hotkeys\n")
       # activates these hotkeys
       keyboard.add_hotkey("e", my_hotkeys.run_explorer, suppress=True)
-      print("added e")
-      keyboard.add_hotkey("r", my_hotkeys.run_browser, suppress=True)
-      print("added r")
       keyboard.add_hotkey("shift+e", my_hotkeys.run_emacs, suppress=True)
-      print("added t")
+      keyboard.add_hotkey("c", my_hotkeys.run_calendar, suppress=True)
+      keyboard.add_hotkey("r", my_hotkeys.run_browser, suppress=True)
+      keyboard.add_hotkey("shift+r", activate_urllist, suppress=True)
       keyboard.add_hotkey("k", my_hotkeys.run_keepass, suppress=True)
-      print("added k")
-      
+      keyboard.add_hotkey("q", run_quit, suppress=True)
+      keyboard.add_hotkey("f", activate_filelist, suppress=True)
+
+      print("added hotkeys")      
       # populate the cheat sheet
-      print_cheatsheet()
+      print_cheatsheet(my_hotkeys.d_my_hotkeys)
       pos_window()
       print("\nVmode activated...\n")
-
 
     elif x == 1:
       set_mode(1)
       print("Leader already added")
 
 
-def print_cheatsheet():
+def print_cheatsheet(dict):
    print("\nListing Keybinds...\n")
    window.attributes('-topmost', True)
    global frm
@@ -74,14 +89,13 @@ def print_cheatsheet():
    frm.config(background="black")
    r = 0
    c = 0
-#  frm.pack()
    frm.grid()
-   for key, value in list_my_hotkeys.items():
+   for key, value in dict.items():
     print(key,value)
    
-   for key, value in list_my_hotkeys.items():
-    tk.Button(frm,text=key + " " + value,
-                     font=("Consolas",22),
+   for key, value in dict.items():
+    tk.Button(frm,text=str(key) + " " + value[0],
+                     font=("Consolas",16),
                      bg="black",
                      fg="white",
                      anchor="w",
@@ -89,15 +103,11 @@ def print_cheatsheet():
                      pady=10, 
                      bd= 0).grid(column=c, row=r)
     
-    if r == 2:
+    if r == 1:
        c += 1
        r = 0
     else:
       r += 1
-
-#   btn.pack()
-#   window.iconphoto(False)
-#   print(list_my_hotkeys.items())
 
 def activate_Imode():
     keyboard.remove_all_hotkeys()
@@ -131,6 +141,10 @@ def set_mode(x):
   global mode
   mode = x
 
+def run_quit():
+      sleep(0.4)
+      window.destroy()
+
 def main():
    if __name__ == "__main__":
       activate_Leader()
@@ -138,27 +152,3 @@ def main():
       window.mainloop()
 
 main()
-
-# def mainloop():
-#    root = tk.Tk()
-#    root.mainloop()
-
-#t_win = threading.Thread(target=mainloop, args=())
-#t_win.start()
-#tmain = threading.Thread(target=keyboard.wait, args=())
-#tmain.start()
-
-
-
-
-
-
-
-
-
-#def initiate():
-#    keyboard.add_hotkey("ctrl+space", lambda: activate_Leader(ldr), suppress=True)
-#    print("init")
-#initiate()
-
-# keyboard.wait() 
