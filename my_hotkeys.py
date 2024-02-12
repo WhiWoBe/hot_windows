@@ -5,12 +5,15 @@ import webbrowser
 ### Hotkey Definitions
 
 d_my_hotkeys = {
-   'e':['explorer'],
+   'f':['explorer'],
+   'F':['browse-files'],
    'E':['emacs'],
    'r':['browser'],
    'f':['files'],
    'R':['browse-url'],
    'k':['keepass'],
+   'T':['Timo'],
+   'C':['Circula'],
    'c':['calendar'],
    'q':['quit']
    }
@@ -42,10 +45,6 @@ def run_explorer():
     subprocess.run("explorer", shell=True)
     print ("Running explorer")
 
-def run_calendar():
-    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
-    print ("Running explorer")
-
 def run_explorer_sub(cmd):
     subprocess.run(f'explorer "{d_my_files[cmd][1]}"')
     print ("Running explorer")
@@ -65,3 +64,15 @@ def run_emacs():
 def run_keepass():
     subprocess.Popen("C:\\Program Files\\KeePass Password Safe 2\\KeePass.exe")
     ("Running keepass")
+
+def run_calendar():
+    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
+    print ("Running explorer")
+
+def run_circular():
+    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=jflapobikhgogdejfkgonkmclfnmaadg --app-url=https://app.circula.com/?homescreen=1 --app-launch-source=4")
+    print ("Running Circular")
+
+def run_timo():
+    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=hfalmkgcdgcinebhagejkbblkihhaanl --app-url=https://www.timo24.de/members/login/login.php --app-launch-source=4")
+    print ("Running Timo")

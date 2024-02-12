@@ -32,7 +32,7 @@ def pos_window():
     position_right = int(screen_width/2.1 - window_width/2)
     position_down = int(screen_height/1 - window_height/2)
     window.geometry(f"+{position_right}+{position_down}")
-    window.geometry("600x100")
+    window.geometry("800x100")
 
 def activate_filelist():
   keyboard.remove_all_hotkeys()
@@ -61,14 +61,17 @@ def activate_Vmode(x):
       set_mode(1)
       print("\nadding hotkeys\n")
       # activates these hotkeys
-      keyboard.add_hotkey("e", my_hotkeys.run_explorer, suppress=True)
+      keyboard.add_hotkey("f", my_hotkeys.run_explorer, suppress=True)
+      keyboard.add_hotkey("shift+f", activate_filelist, suppress=True)
       keyboard.add_hotkey("shift+e", my_hotkeys.run_emacs, suppress=True)
       keyboard.add_hotkey("c", my_hotkeys.run_calendar, suppress=True)
       keyboard.add_hotkey("r", my_hotkeys.run_browser, suppress=True)
       keyboard.add_hotkey("shift+r", activate_urllist, suppress=True)
       keyboard.add_hotkey("k", my_hotkeys.run_keepass, suppress=True)
+      keyboard.add_hotkey("shift+t", my_hotkeys.run_timo, suppress=True)
+      keyboard.add_hotkey("shift+c", my_hotkeys.run_circular, suppress=True)
       keyboard.add_hotkey("q", run_quit, suppress=True)
-      keyboard.add_hotkey("f", activate_filelist, suppress=True)
+      
 
       print("added hotkeys")      
       # populate the cheat sheet
