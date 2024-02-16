@@ -135,7 +135,7 @@ def deactivate_Vmode():
 
 def activate_Leader():
     print("\nRegistering leader Keys...\n")
-    keyboard.add_hotkey("space", lambda: activate_Vmode(mode), suppress=True)
+    keyboard.add_hotkey("alt+space", lambda: activate_Vmode(mode), suppress=True)
     keyboard.add_hotkey("esc", deactivate_Vmode, suppress=True)
     keyboard.add_hotkey("i", activate_Imode, suppress=True)
     print("\nleader keys added\n")

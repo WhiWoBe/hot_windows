@@ -17,6 +17,7 @@ d_my_hotkeys = {
    'c':['calendar'],
    'q':['quit']
    }
+
 d_my_urls = {
    '1' : ['Youtube', 'https://www.youtube.com/', 'Keybind1'],  
    '2' : ['Calendar', 'https://calendar.google.com/calendar/u/0/r?pli=1', 'Keybind2'],   
@@ -24,6 +25,7 @@ d_my_urls = {
    '4' : ['Youtube4', 'https://www.youtube.com/', 'Keybind4'],  
    '5' : ['Youtube5', 'https://www.youtube.com/', 'Keybind5']  
 }
+
 d_my_files = {
    '1' : ['Projects (P)', 'D:\private\projects', 'Keybind1'],  
    '2' : ['Projects (W)', 'D:\kroener\OneDrive - Kröner Medizintechnik\TMI\\04_Projects', 'Keybind2'],   
