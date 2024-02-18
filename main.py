@@ -23,11 +23,6 @@ window.attributes('-alpha', 0.8,
 
 print(my_hotkeys.j_files['1'][0])
 
-# for key, value in d_my_programs.items():
-#     print(key,value[:3:2])
-
-# print(list(d_my_programs.items())[0])
-
 def pos_window():
     window_width = 400
     window_height = 300
