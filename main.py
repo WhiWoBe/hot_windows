@@ -1,10 +1,9 @@
-from time import sleep
-import keyboard
 import tkinter as tk
-import my_hotkeys
+import keyboard
+from time import sleep
 import socket
 
-print(socket.gethostname())
+import my_hotkeys
 
 mode = 0 # 0 = insert / 1 = normal
 window = tk.Tk()
@@ -22,7 +21,7 @@ window.attributes('-alpha', 0.8,
                   '-toolwindow', 0, 
                   '-topmost', 0)
 
-print(my_hotkeys.d_my_files['1'][0])
+print(my_hotkeys.j_files['1'][0])
 
 # for key, value in d_my_programs.items():
 #     print(key,value[:3:2])
@@ -45,8 +44,10 @@ def activate_filelist():
   keyboard.add_hotkey("3", lambda: my_hotkeys.run_explorer_sub('3'), suppress=True)
   keyboard.add_hotkey("4", lambda: my_hotkeys.run_explorer_sub('4'), suppress=True)
   keyboard.add_hotkey("5", lambda: my_hotkeys.run_explorer_sub('5'), suppress=True)
+  keyboard.add_hotkey("6", lambda: my_hotkeys.run_explorer_sub('6'), suppress=True)
+
   frm.destroy()
-  print_cheatsheet(my_hotkeys.d_my_files)
+  print_cheatsheet(my_hotkeys.j_files)
  
 def activate_urllist():
   keyboard.remove_all_hotkeys()
@@ -57,7 +58,7 @@ def activate_urllist():
   keyboard.add_hotkey("4", lambda: my_hotkeys.run_browser_sub('4'), suppress=True)
   keyboard.add_hotkey("5", lambda: my_hotkeys.run_browser_sub('5'), suppress=True)
   frm.destroy()
-  print_cheatsheet(my_hotkeys.d_my_urls)
+  print_cheatsheet(my_hotkeys.j_urls)
 
 def activate_Vmode(x):
     if x == 0:
@@ -79,7 +80,8 @@ def activate_Vmode(x):
 
       print("added hotkeys")      
       # populate the cheat sheet
-      print_cheatsheet(my_hotkeys.d_my_hotkeys)
+      print_cheatsheet(my_hotkeys.j_hotkeys)
+      # print_cheatsheet(my_hotkeys.d_my_hotkeys)
       pos_window()
       print("\nVmode activated...\n")
 
@@ -97,9 +99,10 @@ def print_cheatsheet(dict):
    r = 0
    c = 0
    frm.grid()
+
    for key, value in dict.items():
     print(key,value)
-   
+
    for key, value in dict.items():
     tk.Button(frm,text=str(key) + " " + value[0],
                      font=("Consolas",16),
