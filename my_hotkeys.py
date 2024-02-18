@@ -15,15 +15,18 @@ d_my_hotkeys = {
    'T':['Timo'],
    'C':['Circula'],
    'c':['calendar'],
+   'S':['startup'],
    'q':['quit']
    }
 
 d_my_urls = {
    '1' : ['Youtube', 'https://www.youtube.com/', 'Keybind1'],  
    '2' : ['Calendar', 'https://calendar.google.com/calendar/u/0/r?pli=1', 'Keybind2'],   
-   '3' : ['Youtube3', 'https://www.youtube.com/', 'Keybind3'],  
-   '4' : ['Youtube4', 'https://www.youtube.com/', 'Keybind4'],  
-   '5' : ['Youtube5', 'https://www.youtube.com/', 'Keybind5']  
+   '3' : ['Organice', 'https://organice.200ok.ch/files', 'Keybind3'],  
+   '4' : ['GoogleCalendar', 'https://calendar.google.com/calendar/u/0/r?pli=1', 'Keybind4'],  
+   '5' : ['Postbank', 'https://banking.postbank.de/#/login', 'Keybind5'],  
+   '6' : ['Router', 'https://192.168.1.1/login', 'Keybind5'],  
+   '7' : ['Org', 'https://orgmode.org/org.html', 'Keybind5']  
 }
 
 d_my_files = {
@@ -78,3 +81,11 @@ def run_circular():
 def run_timo():
     subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=hfalmkgcdgcinebhagejkbblkihhaanl --app-url=https://www.timo24.de/members/login/login.php --app-launch-source=4")
     print ("Running Timo")
+
+def run_startup():
+    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
+    subprocess.run("C:\Program Files\Emacs\emacs-29.1\\bin\\runemacs.exe")
+    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
+    subprocess.run("C:\Program Files\Microsoft Office\\root\Office16\OUTLOOK.EXE")
+    subprocess.run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe  --profile-directory=Default --app-id=kjbdgfilnfhdoflbpgamdcdgpehopbep --app-url=https://calendar.google.com/calendar/r --app-launch-source=4")
+

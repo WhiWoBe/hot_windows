@@ -2,6 +2,9 @@ from time import sleep
 import keyboard
 import tkinter as tk
 import my_hotkeys
+import socket
+
+print(socket.gethostname())
 
 mode = 0 # 0 = insert / 1 = normal
 window = tk.Tk()
@@ -70,6 +73,7 @@ def activate_Vmode(x):
       keyboard.add_hotkey("k", my_hotkeys.run_keepass, suppress=True)
       keyboard.add_hotkey("shift+t", my_hotkeys.run_timo, suppress=True)
       keyboard.add_hotkey("shift+c", my_hotkeys.run_circular, suppress=True)
+      keyboard.add_hotkey("shift+s", my_hotkeys.run_startup, suppress=True)
       keyboard.add_hotkey("q", run_quit, suppress=True)
       
 
