@@ -1,7 +1,6 @@
 import tkinter as tk
 import keyboard
 from time import sleep
-import socket
 
 import my_hotkeys
 
@@ -71,7 +70,6 @@ def activate_Vmode(x):
       keyboard.add_hotkey("shift+c", my_hotkeys.run_circular, suppress=True)
       keyboard.add_hotkey("shift+s", my_hotkeys.run_startup, suppress=True)
       keyboard.add_hotkey("q", run_quit, suppress=True)
-      
 
       print("added hotkeys")      
       # populate the cheat sheet
